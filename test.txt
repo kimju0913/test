@@ -1,0 +1,15 @@
+----------------------------Æ®¸®°Å-----------------------------------
+create or replace TRIGGER TEST_BOARD_BNO_TRIGGER
+before insert on TEST_BOARD
+referencing new as new
+for each row
+begin
+    select BOARD_SEQ.NEXTVAL into :new.bno from dual;
+end;
+
+create or replace TRIGGER TEST_BOARD_REGDATE_TRIGGER
+before update on TEST_BOARD
+for each row
+begin
+    select sysdate into :new.REGDATE from DUAL;
+end;   
